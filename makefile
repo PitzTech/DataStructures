@@ -1,8 +1,12 @@
+#
+# Definition
+#
+
 PROJ_NAME=stack_estrutura
 
-C_SOURCE=$(wildcard ./source/*/*.c)
+C_SOURCE=$(wildcard ./source/*.c)
 
-H_SOURCE=$(wildcard ./source/*/*.h)
+H_SOURCE=$(wildcard ./source/*.h)
 
 OBJ=$(subst .c,.o,$(subst source,objects,$(C_SOURCE)))
 
@@ -18,6 +22,10 @@ CC_FLAGS=-c   \
 
 RM = rm -rf
 
+#
+# Compilation and linking
+#
+
 all: objFolder $(PROJ_NAME)
 
 $(PROJ_NAME): $(OBJ)
@@ -26,7 +34,7 @@ $(PROJ_NAME): $(OBJ)
 	@ echo 'Finished building binary: $@'
 	@ echo ' '
 
-./objects/%.o: ./source/*/%.c ./source/*/%.h
+./objects/%.o: ./source/%.c ./source/%.h
 	@ echo 'Building target using GCC compiler: $<'
 	$(CC) $< $(CC_FLAGS) -o $@
 	@ echo ' '
