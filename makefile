@@ -15,7 +15,7 @@ CC=gcc
 CC_FLAGS=-c   \
 	-W          \
 	-Wall       \
-  -std=c99    \
+  -std=c11    \
 	#-ansi      \
 	-pedantic   \
   -lm

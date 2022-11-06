@@ -6,14 +6,14 @@
 int main() {
   printf("RODOU\n");
 
-  stack teste = Stack.new();
-  Stack.push(&teste, 1);
-  printf("TOP: %d\n",Stack.top(&teste));
-  Stack.push(&teste,3);
-  printf("TOP: %d\n",Stack.top(&teste));
-  Stack.pop(&teste);
-  printf("TOP: %d\n",Stack.top(&teste));
-  
+  stack(t) teste = Stack(int).new();
+  Stack(int).push(&teste, 1);
+  printf("TOP: %d\n", Stack(int).top(&teste));
+  Stack(int).push(&teste, 3);
+  printf("TOP: %d\n", Stack(int).top(&teste));
+  Stack(int).pop(&teste);
+  printf("TOP: %d\n", Stack(int).top(&teste));
+
 
   return EXIT_SUCCESS;
 }
