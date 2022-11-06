@@ -21,24 +21,24 @@
 
 #define SURPLUS_SLOTS 10
 
-#define GENERATE_STACK_TYPE(T)  \
-                                  \
-typedef struct {                      \
-  T* _data;                           \
-  size_t _mem_allocated;              \
-  size_t _mem_used;                   \
-  unsigned int _size;                 \
-} stack_##T;                         \
-                                      \
-typedef struct  {                     \
-  bool (*is_empty)(stack_##T*);           \
-  void (*push)(stack_##T*, T*);           \
-  void (*pop)(stack_##T*);                \
-  void (*wipe)(stack_##T*);               \
-  T (*top)(stack_##T*);                   \
-  unsigned int (*size)(stack_##T*);       \
-  stack_##T (*new)();                      \
-} StackInterface_##T;                \
+#define GENERATE_STACK_TYPE(T)                                                                           \
+                                                                                                           \
+typedef struct {                                                                                               \
+  T* _data;                                                                                                    \
+  size_t _mem_allocated;                                                                                       \
+  size_t _mem_used;                                                                                            \
+  unsigned int _size;                                                                                          \
+} stack_##T;                                                                                                  \
+                                                                                                               \
+typedef struct  {                                                                                              \
+  bool (*is_empty)(stack_##T*);                                                                                    \
+  void (*push)(stack_##T*, T*);                                                                                    \
+  void (*pop)(stack_##T*);                                                                                         \
+  void (*wipe)(stack_##T*);                                                                                        \
+  T (*top)(stack_##T*);                                                                                            \
+  unsigned int (*size)(stack_##T*);                                                                                \
+  stack_##T (*new)();                                                                                               \
+} StackInterface_##T;                                                                                         \
                                                                                                                     \
 void resize_##T(stack_##T* self, size_t new_size) {                                                                  \
   T* tmp = (T*)realloc(self->_data, new_size);                                                                  \
@@ -156,6 +156,5 @@ StackInterface_##T Stack_##T = {                                                
 #define Stack(T) Stack_##T
 
 #define stack(T) stack_##T
-
 
 #endif /* STACK_H */
