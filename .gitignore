@@ -56,6 +56,9 @@ dkms.conf
 .vscode
 */.vscodes
 
+# visual studio
+.vs
+
 # replit
 #
 /.ccls-cache

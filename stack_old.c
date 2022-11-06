@@ -74,18 +74,18 @@ struct stack_struct {
   //   float * floatData;
   //   double * doableData;
   // } _data;
-  void * _data; // arr
+  void* _data; // arr
   // void (*push)(stack *, void *);
   // void (*pop)(stack *);
   // bool (*is_empty)(stack *);
   // void * (*last)(stack *);
-  int (*size)(stack *);
+  int (*size)(stack*);
   size_t _size;
   int _used;
   T_TYPENAME _data_type;
 };
 
-void stack_push(stack *self, void *value ) {
+void stack_push(stack* self, void* value) {
   const size_t value_size = sizeof(value);
   printf("SIZE VALUE %zu \n ", sizeof(value));
   printf("SIZE POINTER %zu \n\n ", sizeof(&value));
@@ -98,7 +98,7 @@ void stack_push(stack *self, void *value ) {
   }
 
   if (self->_used > 0 && data_element_size != value_size) {
-    printf("self->_data[0] %d\n", ((int *)self->_data)[0]);
+    printf("self->_data[0] %d\n", ((int*)self->_data)[0]);
     printf("sizeof(self->_data[0]) %zu\n", data_element_size);
     printf("value %lf\n", (int)value);
     printf("sizeof(value) %zu\n", sizeof(value));
@@ -114,41 +114,41 @@ void stack_push(stack *self, void *value ) {
   }
 
   printf("Pointer address %p\n", &self->_data[self->_used]);
-  printf("Pointer VALUE %f\n",((float *)self->_data)[self->_used]);
+  printf("Pointer VALUE %f\n", ((float*)self->_data)[self->_used]);
 
   memcpy(&self->_data[self->_used], &value, data_element_size);
 
   printf("Pointer address %p\n", &self->_data[self->_used]);
-  printf("Pointer VALUE %lf\n",((double *)self->_data)[self->_used]);
+  printf("Pointer VALUE %lf\n", ((double*)self->_data)[self->_used]);
   self->_used++;
 }
-void stack_pop(stack *self) {}
-bool stack_is_empty(stack *self) { return true; }
-void * last(stack *self) {
-  if (self->_data == NULL) {
-    printf("NULL \n");
-    return;
-  }
+void stack_pop(stack* self) {}
+bool stack_is_empty(stack* self) { return true; }
+// void * last(stack *self) {
+//   if (self->_data == NULL) {
+//     printf("NULL \n");
+//     return;
+//   }
 
-  printf("\n\nPRINTING %d position\n", self->_used - 1);
-  printf("Pointer address %p\n", &self->_data[self->_used - 1]);
-  printf("Pointer VALUE %d\n\n",((int *)self->_data)[self->_used - 1]);
+//   printf("\n\nPRINTING %d position\n", self->_used - 1);
+//   printf("Pointer address %p\n", &self->_data[self->_used - 1]);
+//   printf("Pointer VALUE %d\n\n",((int *)self->_data)[self->_used - 1]);
 
-  return self->_data[self->_used - 1];
-}
+//   return self->_data[self->_used - 1];
+// }
 
-// #define 
+// #define
 
 stack Stack(T_TYPENAME data_type) {
   stack new_stack = {
-      // .push = push,
-      // .pop = pop,
-      // .is_empty = is_empty,
-      // .last = last,
-      ._used = 0,
-      ._size = 0,
-      ._data = NULL,
-      ._data_type = data_type
+    // .push = push,
+    // .pop = pop,
+    // .is_empty = is_empty,
+    // .last = last,
+    ._used = 0,
+    ._size = 0,
+    ._data = NULL,
+    ._data_type = data_type
   };
 
   return new_stack;
@@ -159,7 +159,7 @@ int main() {
 
   float teste = 0.2;
   printf("SIZE OF TEST %zu\n\n", sizeof(teste));
-  
+
 
   // my_stack.push(&my_stack, &teste);
   // my_stack.last(&my_stack);
@@ -172,16 +172,16 @@ int main() {
   stack_last(&my_stack);
 
 
-  printf("%lf\n", my_stack.last(&my_stack));
-  
-  
+  // printf("%lf\n", my_stack.last(&my_stack));
+
+
 
   printf("%d\n", my_stack._used);
   printf("%zu\n", my_stack._size);
 
   return 0;
 }
-//gcc stack.c -o out && ./out 
+//gcc stack.c -o out && ./out
 
 
 // C11 DEPENDENT - and  "stdbool.h"
