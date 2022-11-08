@@ -28,7 +28,7 @@ typedef struct {                                                                
   size_t _mem_allocated;                                                                                                \
   size_t _mem_used;                                                                                                     \
   unsigned int _size;                                                                                                   \
-} stack_##T;                                                                                                            \
+} queue_##T;                                                                                                            \
                                                                                                                         \
 typedef struct  {                                                                                                       \
   bool (*is_empty)(stack_##T*);                                                                                         \
@@ -38,7 +38,7 @@ typedef struct  {                                                               
   T (*top)(stack_##T*);                                                                                                 \
   unsigned int (*size)(stack_##T*);                                                                                     \
   stack_##T (*new)();                                                                                                   \
-} StackInterface_##T;                                                                                                   \
+} QueueInterface_##T;                                                                                                   \
                                                                                                                         \
 void resize_##T(stack_##T* self, size_t new_size) {                                                                     \
   T* tmp = (T*)realloc(self->_data, new_size);                                                                          \
@@ -143,7 +143,7 @@ stack_##T new_##T(){                                                            
   return new_stack;                                                                                                     \
 }                                                                                                                       \
                                                                                                                         \
-StackInterface_##T Stack_##T = {                                                                                        \
+QueueInterface_##T Queue_##T = {                                                                                        \
   .new = new_##T,                                                                                                       \
   .push = push_##T,                                                                                                     \
   .top = top_##T,                                                                                                       \
@@ -153,8 +153,8 @@ StackInterface_##T Stack_##T = {                                                
   .pop = pop_##T                                                                                                        \
 };
 
-#define Stack(T) Stack_##T
+#define Queue(T) Queue_##T
 
-#define stack(T) stack_##T
+#define queue(T) queue_##T
 
 #endif /* STACK_H */

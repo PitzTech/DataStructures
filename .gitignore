@@ -53,8 +53,8 @@ dkms.conf
 
 # vscode
 #
-.vscode
-*/.vscodes
+# .vscode
+# */.vscodes
 
 # visual studio
 .vs
